@@ -11,7 +11,7 @@ const Footer = () => {
             <p>AirBnB Plus</p>
             <p>AirBnB Luxe</p>
         </div>
-        <div className='space-y-4 text-xs text-gray-800'>
+        <div className='space-y-4 text-xs text-gray-600'>
         <h5 className='font-bold'>COMMUNITY</h5>
             <p>Accessibility</p>
             <p>This is not a real site</p>
@@ -19,7 +19,7 @@ const Footer = () => {
             <p>Refferals accepted</p>
             <p>Carlos Cat</p>
         </div>
-        <div className='space-y-4 text-xs text-gray-800'>
+        <div className='space-y-4 text-xs text-gray-600'>
         <h5 className='font-bold'>HOST</h5>
             <p>Become a host</p>
             <p>Another link</p>
@@ -27,7 +27,7 @@ const Footer = () => {
             <p>Useful info</p>
             <p>You are awesome</p>
         </div>
-        <div className='space-y-4 text-xs text-gray-800'>
+        <div className='space-y-4 text-xs text-gray-600'>
         <h5 className='font-bold'>SUPPORT</h5>
             <p>Help Centre</p>
             <p>Trust & Safety</p>
