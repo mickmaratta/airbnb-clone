@@ -34,7 +34,6 @@ const Header = ({placeholder}) => {
     setNoOfDays(calaculateDays(ranges.selection.startDate, ranges.selection.endDate))
   };
 
-  console.log(startDate);
 
   const handleSearch = () => {
     router.push({

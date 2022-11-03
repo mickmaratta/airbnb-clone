@@ -7,49 +7,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LargeCard from "../components/LargeCard";
 import MediumCard from "../components/MediumCard";
-import { getCity } from "./api/city";
-import { getHotels } from "./api/hotels";
 
 export default function Home({ exploreData, cardsData }) {
-  const [city, setCity] = useState('')
-  const [hotels, setHotels] = useState([])
-  const [searchCity, setSearchCity] = useState('calgary')
-
- /*    const getCity = async () => {
-      try {
-        const res = await axios.get('api/city/', {
-          params: {searchCity}
-        });
-        const {data} = res;
-        setCity(data.suggestions[0].entities[0].destinationId);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    console.log(city)
-    const getHotels = async () => {
-      try {
-        const res = await axios.get('api/hotels/', {
-          params: {city}
-        });
-        const {data} = res;
-        setHotels(data.data.body.searchResults.results);
-      } catch (error) {
-        console.log(error);
-      }
-    }; */
-
-    const getNewCity = () => {
-      setCity(getCity('calgary'))
-    }
-    const getNewHotels = () => {
-      setHotels(getHotels())
-    }
-    
-
-console.log(city)
-
   return (
     <div>
       <Head>

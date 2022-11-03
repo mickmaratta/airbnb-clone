@@ -6,7 +6,6 @@ import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
 import MapComponent from "../components/MapComponent";
 import axios from "axios";
-import { getCity } from "./api/city";
 
 const Search = ({ searchResults, hotels }) => {
   const router = useRouter();
@@ -15,10 +14,6 @@ const Search = ({ searchResults, hotels }) => {
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
-
-  console.log(hotels);
-  console.log(searchResults)
-  console.log(location)
 
   return (
     <div className="h-screen">
