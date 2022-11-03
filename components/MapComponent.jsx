@@ -3,14 +3,13 @@ import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { getCenter } from "geolib";
 
-const MapComponent = ({ searchResults }) => {
+const MapComponent = ({ searchResults, hotels }) => {
   const [selected, setSelected] = useState({});
 
-  const coordinates = searchResults.map((result) => ({
-    longitude: result.long,
-    latitude: result.lat,
+  const coordinates = hotels.map((result) => ({
+    longitude: result.coordinate.lon,
+    latitude: result.coordinate.lat,
   }));
-  console.log(selected);
   const center = getCenter(coordinates);
 
   return (
@@ -18,33 +17,33 @@ const MapComponent = ({ searchResults }) => {
       initialViewState={{
         latitude: center.latitude,
         longitude: center.longitude,
-        zoom: 10,
+        zoom: 13,
       }}
-      style={{ width: "100%", height: "100%" }}
-      mapStyle="mapbox://styles/mickmaratta/cla0fxio0000w15p78v1k5aks"
+      style={{ width: "100%", height: "30%" }}
+      mapStyle="mapbox://styles/mickmaratta/cla1h3w8l000216lft1epnwbs"
       mapboxAccessToken={process.env.mapbox_key}
     >
-      {searchResults.map((result) => (
-        <div key={result.long}>
+      {hotels.map((result) => (
+        <div key={result.id}>
           <Marker
             clickTolerance={30}
             onClick={() => setSelected(result)}
-            longitude={result.long}
-            latitude={result.lat}
-            color="#Fd5B61"
+            longitude={result.coordinate.lon}
+            latitude={result.coordinate.lat}
+            color="#e47676"
           ></Marker>
-          {selected.long === result.long ? (
+          {selected.coordinate?.lon === result.coordinate.lon ? (
             <Popup
-              latitude={result.lat}
-              longitude={
-                result.long}
+              latitude={result.coordinate.lat}
+              longitude={result.coordinate.lon}
               anchor="bottom"
               offset={30}
               closeOnClick={false}
               onClose={() => setSelected({})}
             >
-              <div>
-                <p className="text-sm text-gray-500">{result.title}</p>
+              <div className="flex-col justify-center items-center text-center rounded-lg">
+                <p className="text-sm text-gray-800">{result.name}</p>
+                <p className="text-xs text-gray-500">{result.ratePlan.price.current}/night</p>
               </div>
             </Popup>
           ) : (

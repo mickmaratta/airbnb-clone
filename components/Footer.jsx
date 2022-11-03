@@ -5,11 +5,11 @@ const Footer = () => {
     <footer className='grid grid-cols-1 md:grid-cols-4 gap-y-10 px-32 py-14 bg-gray-100'>
         <div className='space-y-4 text-xs text-gray-600'>
             <h5 className='font-bold'>ABOUT</h5>
-            <p>How AirBnB works</p>
+            <p>How it works</p>
             <p>Newsroom</p>
             <p>Investors</p>
-            <p>AirBnB Plus</p>
-            <p>AirBnB Luxe</p>
+            <p>CarlosPlus</p>
+            <p>CarlosLuxe</p>
         </div>
         <div className='space-y-4 text-xs text-gray-600'>
         <h5 className='font-bold'>COMMUNITY</h5>
@@ -17,7 +17,7 @@ const Footer = () => {
             <p>This is not a real site</p>
             <p>Its a pretty awesome clone</p>
             <p>Refferals accepted</p>
-            <p>Carlos Cat</p>
+            <p>Carlos is a Cat</p>
         </div>
         <div className='space-y-4 text-xs text-gray-600'>
         <h5 className='font-bold'>HOST</h5>

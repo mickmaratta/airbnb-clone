@@ -5,7 +5,7 @@ import React from "react";
 
 const InfoCard = ({ hotel, days }) => {
   return (
-    <div className="flex py-7 px-2 border-b cursor-pointer hover:opacity-80 hover:shadow-lg pr-4 transform transition duration-150 ease-out first:border-t rounded-xl">
+    <div className="flex-col md:flex-row py-7 px-2 border-b cursor-pointer hover:opacity-80 hover:shadow-lg pr-4 transform transition duration-150 ease-out first:border-t rounded-xl">
       <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
         <Image
           src={hotel.optimizedThumbUrls.srpDesktop}
@@ -24,7 +24,7 @@ const InfoCard = ({ hotel, days }) => {
         <div className="flex justify-between pt-5 items-end">
           <div>
             <p className="flex items-center text-sm">
-              <StarIcon className="h-5 text-red-400" />{" "}
+              <StarIcon className="h-5 text-[#e47676]" />{" "}
               {hotel.guestReviews?.unformattedRating}/10
             </p>
             <p className="text-xs text-gray-500">{hotel.guestReviews?.total} Reviews</p>

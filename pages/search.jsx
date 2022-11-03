@@ -15,6 +15,7 @@ const Search = ({ searchResults, hotels }) => {
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
 
+  console.log(hotels)
   return (
     <div className="h-screen">
       <Header placeholder={`${location} | ${range} | ${guests} guests`} />
@@ -48,7 +49,7 @@ const Search = ({ searchResults, hotels }) => {
         </section>
 
         <section className="xl:inline-flex xl:min-w-[600px]">
-          <MapComponent searchResults={searchResults} />
+          <MapComponent searchResults={searchResults} hotels={hotels} />
         </section>
       </main>
 
