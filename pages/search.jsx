@@ -15,7 +15,6 @@ const Search = ({ searchResults, hotels }) => {
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
 
-  console.log(hotels)
   return (
     <div className="h-screen">
       <Header placeholder={`${location} | ${range} | ${guests} guests`} />
