@@ -4,13 +4,13 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { getCenter } from "geolib";
 
 const MapComponent = ({ searchResults }) => {
-  const [selectedLocation, setSelectedLocation] = useState({});
+  const [selected, setSelected] = useState({});
 
   const coordinates = searchResults.map((result) => ({
     longitude: result.long,
     latitude: result.lat,
   }));
-
+  console.log(selected);
   const center = getCenter(coordinates);
 
   return (
@@ -27,19 +27,25 @@ const MapComponent = ({ searchResults }) => {
       {searchResults.map((result) => (
         <div key={result.long}>
           <Marker
-            onClick={() => setSelectedLocation(result)}
+            clickTolerance={30}
+            onClick={() => setSelected(result)}
             longitude={result.long}
             latitude={result.lat}
             color="#Fd5B61"
           ></Marker>
-          {selectedLocation.long === result.long ? (
+          {selected.long === result.long ? (
             <Popup
-              closeOnClick={true}
-              onClose={() => setSelectedLocation({})}
               latitude={result.lat}
-              longitude={result.long}
+              longitude={
+                result.long}
+              anchor="bottom"
+              offset={30}
+              closeOnClick={false}
+              onClose={() => setSelected({})}
             >
-              {result.title}
+              <div>
+                <p className="text-sm text-gray-500">{result.title}</p>
+              </div>
             </Popup>
           ) : (
             false

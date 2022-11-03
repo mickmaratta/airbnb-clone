@@ -1,12 +1,55 @@
+import axios from "axios";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import Card from "../components/Card";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LargeCard from "../components/LargeCard";
 import MediumCard from "../components/MediumCard";
+import { getCity } from "./api/city";
+import { getHotels } from "./api/hotels";
 
 export default function Home({ exploreData, cardsData }) {
+  const [city, setCity] = useState('')
+  const [hotels, setHotels] = useState([])
+  const [searchCity, setSearchCity] = useState('calgary')
+
+ /*    const getCity = async () => {
+      try {
+        const res = await axios.get('api/city/', {
+          params: {searchCity}
+        });
+        const {data} = res;
+        setCity(data.suggestions[0].entities[0].destinationId);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    console.log(city)
+    const getHotels = async () => {
+      try {
+        const res = await axios.get('api/hotels/', {
+          params: {city}
+        });
+        const {data} = res;
+        setHotels(data.data.body.searchResults.results);
+      } catch (error) {
+        console.log(error);
+      }
+    }; */
+
+    const getNewCity = () => {
+      setCity(getCity('calgary'))
+    }
+    const getNewHotels = () => {
+      setHotels(getHotels())
+    }
+    
+
+console.log(city)
+
   return (
     <div>
       <Head>
@@ -19,7 +62,7 @@ export default function Home({ exploreData, cardsData }) {
       <Banner />
       <main className="max-w-7xl mx-auto px-8 sm:px-16">
         <section>
-          <h2 className="text-4xl font-semibold pb-5 pt-6">Explore Nearby</h2>
+          <h2 className="text-4xl font-semibold pb-5 pt-6" onClick={() => getNewHotels()}>Explore Nearby</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {exploreData.map(({ img, location, distance }) => (
@@ -33,18 +76,18 @@ export default function Home({ exploreData, cardsData }) {
           </div>
         </section>
         <section>
-          <h2 className="text-4xl font-semibold py-8">Live Anywhere</h2>
+          <h2 className="text-4xl font-semibold py-8" onClick={() => getNewCity()}>Live Anywhere</h2>
           <div className="flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3">
             {cardsData.map(({ img, title }) => (
               <MediumCard key={img} img={img} title={title} />
             ))}
           </div>
         </section>
-        <LargeCard 
-        img="https://links.papareact.com/4cj"
-        title="The Great Outdoors"
-        desc="Wishlists created by AirBnB"
-        buttonText="Get Inspired"
+        <LargeCard
+          img="https://links.papareact.com/4cj"
+          title="The Great Outdoors"
+          desc="Wishlists created by AirBnB"
+          buttonText="Get Inspired"
         />
       </main>
       <Footer />
@@ -60,6 +103,7 @@ export async function getStaticProps() {
   const cardsData = await fetch("https://www.jsonkeeper.com/b/VHHT").then(
     (res) => res.json()
   );
+
   return {
     props: {
       exploreData,

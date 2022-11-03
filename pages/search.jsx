@@ -5,17 +5,21 @@ import { useRouter } from "next/router";
 import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
 import MapComponent from "../components/MapComponent";
+import axios from "axios";
+import { getCity } from "./api/city";
 
-
-const Search = ({ searchResults }) => {
+const Search = ({ searchResults, hotels }) => {
   const router = useRouter();
-  const { location, startDate, endDate, guests } = router.query;
+  const { location, startDate, endDate, guests, days } = router.query;
 
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
 
-  
+  console.log(hotels);
+  console.log(searchResults)
+  console.log(location)
+
   return (
     <div className="h-screen">
       <Header placeholder={`${location} | ${range} | ${guests} guests`} />
@@ -36,17 +40,12 @@ const Search = ({ searchResults }) => {
             <p className="button">More filters</p>
           </div>
           <div className="flex flex-col">
-            {searchResults.map(
-              ({ img, location, title, description, star, price, total }) => (
+            {hotels.map(
+              (hotel) => (
                 <InfoCard
-                  key={img}
-                  location={location}
-                  title={title}
-                  desc={description}
-                  star={star}
-                  price={price}
-                  total={total}
-                  img={img}
+                  key={hotel.id}
+                  hotel={hotel}
+                  days={days}
                 />
               )
             )}
@@ -65,16 +64,58 @@ const Search = ({ searchResults }) => {
 
 export default Search;
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const { location, startDate, endDate, guests } = context.query;
+  const formattedCheckIn = format(new Date(startDate), "yyyy-MM-dd");
+  const formattedCheckOut = format(new Date(endDate), "yyyy-MM-dd");
+
   const searchResults = await fetch("https://www.jsonkeeper.com/b/5NPS").then(
     (res) => res.json()
   );
 
+  
+  const cityOptions = {
+    method: "GET",
+    url: "https://hotels4.p.rapidapi.com/locations/v2/search",
+    params: { query: location.toLowerCase(), locale: 'en_US', langid: '1033', siteid: '300000001' },
+    headers: {
+        'X-RapidAPI-Key': process.env.REACT_APP_PUBLIC_RAPIDAPI_KEY,
+        'X-RapidAPI-Host': 'hotels4.p.rapidapi.com'
+    },
+  };
+  const cityRes = await axios.request(cityOptions);
+  const cityId = cityRes.data.suggestions[0].entities[0].destinationId
+
+
+const hotelOptions = {
+  method: 'GET',
+  url: 'https://hotels4.p.rapidapi.com/properties/list',
+  params: {
+    destinationId: cityId,
+    pageNumber: '1',
+    pageSize: '10',
+    checkIn: formattedCheckIn,
+    checkOut: formattedCheckOut,
+    adults1: guests,
+    sortOrder: 'PRICE',
+    locale: 'en_US',
+    currency: 'CAD'
+  },
+  headers: {
+    'X-RapidAPI-Key': process.env.REACT_APP_PUBLIC_RAPIDAPI_KEY,
+    'X-RapidAPI-Host': 'hotels4.p.rapidapi.com'
+  }
+};
+
+const hotelRes = await axios.request(hotelOptions);
+const hotels = await hotelRes.data.data.body.searchResults.results
+
+
   return {
     props: {
       searchResults,
+      hotels
     },
   };
 }
 
-//https://links.papareact.com/isz

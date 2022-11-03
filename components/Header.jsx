@@ -19,12 +19,22 @@ const Header = ({placeholder}) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [guests, setGuests] = useState(1);
+  const [noOfDays, setNoOfDays] = useState(1);
   const router = useRouter();
+
+  const calaculateDays = (start, end) => {
+    let t1 = start.getTime();
+    let t2 = end.getTime();
+    return Math.floor((t2-t1)/(24*3600*1000));
+  }
 
   const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
+    setNoOfDays(calaculateDays(ranges.selection.startDate, ranges.selection.endDate))
   };
+
+  console.log(startDate);
 
   const handleSearch = () => {
     router.push({
@@ -33,6 +43,7 @@ const Header = ({placeholder}) => {
         location: searchInput,
         startDate: startDate.toISOString(),
         endDate: endDate.toISOString(),
+        days: noOfDays,
         guests: guests
       }
     })
