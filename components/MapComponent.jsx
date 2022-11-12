@@ -17,9 +17,9 @@ const MapComponent = ({ searchResults, hotels }) => {
       initialViewState={{
         latitude: center.latitude,
         longitude: center.longitude,
-        zoom: 13,
+        zoom: 9,
       }}
-      style={{ width: "100%", height: "30%" }}
+      style={{ width: "100%", height: "30%", minHeight: "75vh" }}
       mapStyle="mapbox://styles/mickmaratta/cla1h3w8l000216lft1epnwbs"
       mapboxAccessToken={process.env.mapbox_key}
     >

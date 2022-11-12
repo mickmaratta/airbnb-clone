@@ -88,7 +88,7 @@ const hotelOptions = {
   params: {
     destinationId: cityId,
     pageNumber: '1',
-    pageSize: '10',
+    pageSize: '7',
     checkIn: formattedCheckIn,
     checkOut: formattedCheckOut,
     adults1: guests,
