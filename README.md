@@ -1,34 +1,102 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Carlos Vacations
 
-## Getting Started
+This is a hotel booking application created using Next.js and the Hotel API from RapidAPI.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Search for a destination and choose the dates and number of guests
+- Results are rendered using Next.js ServerSideProps to fetch the data from an external API before the user is shown the results page
+- Recieve hotel details for the destination and date range given
+- View the location of the hotels rendered on Mapbox map
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Screenshot
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+![](./assets/images/carlos-vacations-0.webp)
+![](./assets/images/carlos-vacations-1.webp)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Links
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Live Site URL: [Carlos Vacations](https://airbnb-clone-one-puce.vercel.app/)
 
-## Learn More
+### Built with
 
-To learn more about Next.js, take a look at the following resources:
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [Heroicons](https://heroicons.com/)
+- [Mapbox](https://www.mapbox.com/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [date-fns](https://date-fns.org/)
+- [geolib](https://www.npmjs.com/package/geolib) 
+- [react-date-range](https://www.npmjs.com/package/react-date-range) 
+- [badrap-bar-of-progress](https://www.npmjs.com/package/@badrap/bar-of-progress)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### What I learned
 
-## Deploy on Vercel
+With this project I learned the basics of using Next.js. I learned how to use Static Page Props for the homepage and Server Side Props for the Search page. I learned how navigation works within the Next.js framework. I also got a chance to practice working with an external API, in this case Hotel API by RapidAPI. I also learned how to implement a calendar and date-range selector into a website which is a very useful tool. Lastly I worked with mapbox and geolib and learned how to integrate a functional dynamic map component into a page.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Continued development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For this project I'd like to try out some different hotel API's, possibly call multiple external API's and show all the results. Overall I'd like to dive deeper into Next.js and start working with the different functionalities that this framework offers.
+
+### Useful resources
+
+- [HotelsAPI](https://rapidapi.com/apidojo/api/hotels4/) - This the API used to render results to Carlos Vacations.
+
+
+## Author
+
+- Website - [Mick Maratta](https://mickmaratta.me/)
+- Linkedin - [Mick Maratta](https://www.linkedin.com/in/mick-maratta-149b79250/)
+# Carlos Vacations
+
+This is a hotel booking application created using Next.js and the Hotel API from RapidAPI.
+
+## Overview
+
+- Search for a destination and choose the dates and number of guests
+- Results are rendered using Next.js ServerSideProps to fetch the data from an external API before the user is shown the results page
+- Recieve hotel details for the destination and date range given
+- View the location of the hotels rendered on Mapbox map
+
+### Screenshot
+
+![](./assets/images/carlos-vacations-0.webp)
+![](./assets/images/carlos-vacations-1.webp)
+
+### Links
+
+- Live Site URL: [Carlos Vacations](https://airbnb-clone-one-puce.vercel.app/)
+
+### Built with
+
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [Heroicons](https://heroicons.com/)
+- [Mapbox](https://www.mapbox.com/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [date-fns](https://date-fns.org/)
+- [geolib](https://www.npmjs.com/package/geolib) 
+- [react-date-range](https://www.npmjs.com/package/react-date-range) 
+- [badrap-bar-of-progress](https://www.npmjs.com/package/@badrap/bar-of-progress)
+
+
+### What I learned
+
+With this project I learned the basics of using Next.js. I learned how to use Static Page Props for the homepage and Server Side Props for the Search page. I learned how navigation works within the Next.js framework. I also got a chance to practice working with an external API, in this case Hotel API by RapidAPI. I also learned how to implement a calendar and date-range selector into a website which is a very useful tool. Lastly I worked with mapbox and geolib and learned how to integrate a functional dynamic map component into a page.
+
+### Continued development
+
+For this project I'd like to try out some different hotel API's, possibly call multiple external API's and show all the results. Overall I'd like to dive deeper into Next.js and start working with the different functionalities that this framework offers.
+
+### Useful resources
+
+- [HotelsAPI](https://rapidapi.com/apidojo/api/hotels4/) - This the API used to render results to Carlos Vacations.
+
+
+## Author
+
+- Website - [Mick Maratta](https://mickmaratta.me/)
+- Linkedin - [Mick Maratta](https://www.linkedin.com/in/mick-maratta-149b79250/)
