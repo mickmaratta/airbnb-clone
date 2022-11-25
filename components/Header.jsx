@@ -47,6 +47,7 @@ const Header = ({placeholder}) => {
         guests: guests
       }
     })
+    setSearchInput('');
   }
 
   const selectionRange = {
